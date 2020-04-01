@@ -1,0 +1,12 @@
+{
+  "name": "CellEdit",
+  "version": "1.0.20",
+  "description": "inline edit cell content for datatables",
+  "main": "js/dataTables.cellEdit.js",
+  "repository": {
+    "url": "https://github.com/cosmopolit/CellEdit",
+    "type": "git"
+  },
+  "author": "Rico Redivo <redivo@general-informatics.com>",
+  "license": "MIT"
+}
