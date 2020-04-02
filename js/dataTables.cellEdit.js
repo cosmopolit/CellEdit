@@ -21,10 +21,39 @@
  * For details please refer to: http://www.datatables.net
  */
 
-jQuery.fn.dataTable.Api.register('MakeCellsEditable()', function (settings) {
+(function( factory ){
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD
+        define( ['jquery', 'datatables.net'], function ( $ ) {
+            return factory( $, window, document );
+        } );
+    }
+    else if ( typeof exports === 'object' ) {
+        // CommonJS
+        module.exports = function (root, $) {
+            if ( ! root ) {
+                root = window;
+            }
+
+            if ( ! $ || ! $.fn.dataTable ) {
+                $ = require('datatables.net')(root, $).$;
+            }
+
+            return factory( $, root, root.document );
+        };
+    }
+    else {
+        // Browser
+        factory( jQuery, window, document );
+    }
+}(function( $, window, document, undefined ) {
+    'use strict';
+
+
+$.fn.dataTable.Api.register('MakeCellsEditable()', function (settings) {
     var table = this.table();
 
-    jQuery.fn.extend({
+    $.fn.extend({
         
         // Red: Allow submit with enter and cancel with escape
         keyupEditableCell: function (e, callingElement) {
@@ -122,7 +151,7 @@ jQuery.fn.dataTable.Api.register('MakeCellsEditable()', function (settings) {
             // DETERMINE WHAT COLUMNS CAN BE EDITED
             if ((settings.columns && settings.columns.indexOf(currentColumnIndex) > -1) || (!settings.columns)) {
                 var row = table.row($(this).parents('tr'));
-                editableCellsRow = row;
+                var editableCellsRow = row;
 
                 var cell = table.cell(this).node();
                 var oldValue = table.cell(this).data();
@@ -251,3 +280,4 @@ function sanitizeCellValue(cellValue) {
     }
     return cellValue;
 }
+}));
