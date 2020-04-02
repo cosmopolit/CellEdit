@@ -17,5 +17,7 @@
     "example"
   ],
   "devDependencies": {
+      "jquery": ">=1.7",
+      "datatables.net": "^1.10.15"    
   }
 }
