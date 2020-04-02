@@ -1,6 +1,6 @@
 {
   "name": "CellEdit",
-  "version": "1.0.20",
+  "version": "1.20.3",
   "description": "inline edit cell content for datatables",
   "files": [
       "js/**/*.js"
